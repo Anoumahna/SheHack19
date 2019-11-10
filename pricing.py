@@ -61,16 +61,17 @@ def getEntry():
 	
 	#y_t=Y_t[3]
 	ar = np.array([])
-	W_t=[]
-	for row ,t in x_t , y_t:
-		W_t=np.append(ar,row,t)
+	W_t=zip(x_t,y_t)
+	W_t=list(W_t)
 	
-	W_t = W_t.astype(float)
+	#W_t = W_t.astype(float)
 	
 	#print("Result: ",(np.dot( W_t,sk_linreg.coef_)+sk_linreg.intercept_))
 	price=[];
 	for row in W_t:
 		print("Row" ,row)
+		#row=row.astype(float)
+		row=list(map(float,row))
 		price.append(np.dot(row,sk_linreg.coef_)+sk_linreg.intercept_)
 	print("Prices: ",price)
 	#json.dump()
